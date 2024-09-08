@@ -20,9 +20,6 @@ func main() {
 }
 
 func divide(x []string) (int, int) {
-	if len(x) != 3 {
-		panic("Выдача паники, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *).")
-	}
 	a, _ := strconv.Atoi(x[0])
 	b, _ := strconv.Atoi(x[2])
 	return a, b
