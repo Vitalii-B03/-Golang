@@ -116,7 +116,7 @@ func Scaner(x []string) {
 		panic("Выдача паники, так как строка не является математической операцией.")
 	}
 	rim := []string{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"}
-	arab := []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
+	arab := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
 	for _, value := range rim {
 		if value == x[0] {
 			for _, value := range rim {
