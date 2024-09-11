@@ -16,7 +16,11 @@ func main() {
 	text = strings.TrimSpace(text)
 	var numb []string = strings.Split(text, " ")
 
-	Scaner(numb)
+	a, b := Scaner(numb)
+	if a == false && b == false {
+		panic("Выдача паники, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *).")
+	}
+
 }
 
 func divide(x []string) (int, int) {
@@ -109,22 +113,24 @@ func RimNumb(a string, b string, c string) string {
 	return Result
 }
 
-func Scaner(x []string) {
+func Scaner(x []string) (bool, bool) {
 	if len(x) > 3 {
 		panic("Выдача паники, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *).")
 	} else if len(x) < 3 {
 		panic("Выдача паники, так как строка не является математической операцией.")
-	}else if x[0] == "0" || x[2] == "0" {
+	} else if x[0] == "0" || x[2] == "0" {
 		panic("Выдача паники, так как присутствует 0")
 	}
 	rim := []string{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"}
 	arab := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
+	s := false
+	s1 := false
 	for _, value := range rim {
 		if value == x[0] {
 			for _, value := range rim {
 				if value == x[2] {
 					fmt.Println(RimNumb(x[0], x[2], x[1]))
-
+					s = true
 				}
 				for _, value := range arab {
 					if value == x[2] {
@@ -144,7 +150,7 @@ func Scaner(x []string) {
 				if value == x[2] {
 					a, b := divide(x)
 					fmt.Println(calculet(a, b, x[1]))
-
+					s1 = true
 				}
 
 				for _, value := range rim {
@@ -155,4 +161,5 @@ func Scaner(x []string) {
 			}
 		}
 	}
+	return s, s1
 }
