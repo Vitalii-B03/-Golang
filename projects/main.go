@@ -34,6 +34,9 @@ func calculet(a int, b int, c string) int {
 	if c == "*" {
 		d = a * b
 	} else if c == "/" {
+		if a < b {
+			panic("Выдача паники, так как результат меньше единицы")
+		}
 		d = (a - (a % b)) / b
 	} else if c == "+" {
 		d = a + b
